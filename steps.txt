@@ -1,0 +1,28 @@
+sudo su
+dnf update -y
+dnf install -y httpd php php-mysqli mariadb105
+systemctl start httpd
+systemctl enable httpd
+
+adminpassword
+
+
+dnf install -y pip
+dnf install -y mariadb105-devel gcc python3-devel
+pip install mysqlclient
+
+mysql -h webappdb.cbis6kyi4m01.ap-south-1.rds.amazonaws.com -u admin -p
+CREATE DATABASE corp;
+use corp;
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    age INT NOT NULL,
+    city VARCHAR(100) NOT NULL
+);
+SHOW TABLES;
+DESCRIBE employees;
+INSERT INTO employees (name, age, city) VALUES ('Hari', 25, 'Mumbai');
+INSERT INTO employees (name, age, city) VALUES ('Anita', 30, 'Delhi');
+INSERT INTO employees (name, age, city) VALUES ('Ravi', 28, 'Bangalore');
+SELECT * FROM employees;
